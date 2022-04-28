@@ -1,0 +1,85 @@
+
+
+body{
+    @include heightwidth;
+    @include css-flexbox(center,center);
+    overflow: hidden;
+ }
+ 
+ .container{
+     @include css-grid(1fr,'1fr 1fr');
+     height: 500px;
+     width: 700px;
+     background-color: $clr_black;
+     color:$clr_white;
+     font-family: $poppins;
+ 
+     img{
+      @include image;
+      overflow: hidden;
+     }
+ 
+     &__form{
+         @include css-flexbox(center,center);
+         flex-direction: column;
+         padding:1.25rem 0;
+     
+ 
+         h2{
+             text-align: left;
+             position: relative;
+             margin-bottom: 2rem;
+         }
+         h2::after{
+             content: ' ';
+             position: absolute;
+             height: 2px;
+             width: 40px;
+             background-color: $clr_white;
+             top:38px;
+             left: 0;
+             
+         }
+ 
+ 
+         input[type="email"], input[type="password"]
+         {
+             @include form-input-fields;
+             font-family: $poppins;
+            
+         }
+         
+         input[type="submit"]{
+             @include button;  
+             font-size: 1rem;  
+             font-weight: $font_semi-bold;
+             font-family: $poppins;
+             margin-top: 0.2em; 
+             transition: 0.3s;
+
+             &:hover{
+                 background-color:$clr_green;
+                 cursor: pointer;
+             }
+         }
+ 
+         p{
+             text-align: left;
+             margin-top: 2rem;
+             font-size: 0.8rem;
+             font-weight: 200;
+ 
+             span{
+                 a{
+                    @include links;
+                    color:$clr_red;
+                    font-weight: $font_medium;
+                 }
+             }
+         }
+     
+     }
+ 
+    
+     
+ }
