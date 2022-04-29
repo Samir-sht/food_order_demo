@@ -41,8 +41,7 @@ body{
              
          }
  
- 
-         input[type="email"], input[type="password"]
+         input[type="email"], input[type="password"],input[type="text"]
          {
              @include form-input-fields;
              font-family: $poppins;
@@ -51,8 +50,8 @@ body{
          
          input[type="submit"]{
              @include button;  
-             font-size: 1rem;  
-             font-weight: $font_semi-bold;
+             font-size: 0.9rem;  
+             font-weight: $font_medium;
              font-family: $poppins;
              margin-top: 0.2em; 
              transition: 0.3s;
