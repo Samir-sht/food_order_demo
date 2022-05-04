@@ -1,6 +1,6 @@
 
 
-body{
+header{
     @include heightwidth;
     @include css-flexbox(center,center);
     overflow: hidden;
@@ -45,16 +45,33 @@ body{
          {
              @include form-input-fields;
              font-family: $poppins;
+             outline: none;
+             border: none;
             
          }
+
+         input[type="checkbox"]{
+             accent-color: $clr_green;
+             height: 15px;
+             width: 15px;
+
+            
+            }
+
+            span.remember{
+                font-size: 1rem;
+                margin-left: 0.5rem;
+             }
+        
          
          input[type="submit"]{
              @include button;  
              font-size: 0.9rem;  
              font-weight: $font_medium;
              font-family: $poppins;
-             margin-top: 0.2em; 
+             margin-top: 1rem; 
              transition: 0.3s;
+             
 
              &:hover{
                  background-color:$clr_green;

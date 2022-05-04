@@ -22,12 +22,18 @@
 }
 
 @mixin button{
+    
     background-color: $clr_red;
     color: $clr_white;
     height: 35px;
     width: 100px;
-    border-radius: $button-radius;
+    border-radius:$button-radius;
     border:none;
+}
+
+@mixin a{
+text-decoration: none;
+
 }
 
 @mixin form-input-fields{
@@ -36,9 +42,17 @@
     margin-top: 0.1rem;
     margin-bottom: 1rem;
     outline: none;
-    // border-radius: $border-radius;
+    border-radius: $button-radius;
 }
 
 @mixin links{
     text-decoration: none;
+}
+
+
+@mixin card{
+    height: 300px;
+    width: 540px;
+    box-shadow: 5px 6px 20px rgba(0,0,0,.5);
+    gap: 1rem;
 }
