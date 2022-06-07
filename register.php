@@ -14,6 +14,9 @@
     <title>Madhyapur Restro</title>
   </head>
   <body>
+    <div class="main-container">
+    <?php include 'navbar.php';?>
+    </div>
     <header>
       <div class="container">
         <div class="container__form">
@@ -30,11 +33,12 @@
           </form>
 
           <p>
-            Have An Account? <span><a href="login.html">login Now</a></span>
+            Have An Account? <span><a href="login.php">login Now</a></span>
           </p>
         </div>
         <img src="food.jpg" alt="food" />
       </div>
     </header>
+    <?php include 'footer.php';?>
   </body>
 </html>

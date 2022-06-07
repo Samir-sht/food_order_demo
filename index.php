@@ -10,24 +10,41 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="dist/css/style.min.css" />
+    <link rel="stylesheet" href="./dist/css/style.min.css" />
     <title>Madhyapur Restro</title>
   </head>
   <body>
     <div class="main-container">
-      <nav>
-        <h2 class="logo_name"><a href="mainpage.html">Madhyapur Restro</a></h2>
-
-        <div class="cart">
-          <div class="cart-img">
-            <img src="cart.svg" alt="cart" />
-          </div>
-          <a href="login.html">login</a>
-        </div>
-      </nav>
+      <?php include 'navbar.php';?>
 
       <div class="menu-list">
         <h2 class="title">Our Menu</h2>
+      </div>
+
+      <div class="card-container">
+        <div class="card">
+          <img src="food.jpg" alt="food item" />
+          <div class="card_body">
+            <h2 class="card_title">Burger</h2>
+            <p class="card_desc">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
+            </p>
+            <p class="card_price">Rs 100</p>
+            <a href="#" class="btn-cart">add to cart</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="food.jpg" alt="food item" />
+          <div class="card_body">
+            <h2 class="card_title">Burger</h2>
+            <p class="card_desc">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
+            </p>
+            <p class="card_price">Rs 100</p>
+            <a href="#" class="btn-cart">add to cart</a>
+          </div>
+        </div>
 
         <div class="card">
           <img src="food.jpg" alt="food item" />
@@ -42,5 +59,6 @@
         </div>
       </div>
     </div>
+<?php include 'footer.php';?>
   </body>
 </html>

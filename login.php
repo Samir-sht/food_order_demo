@@ -14,6 +14,10 @@
     <title>Madhyapur Restro</title>
   </head>
   <body>
+  <div class="main-container">
+    <?php include 'navbar.php'; ?>
+</div>
+
     <header>
       <div class="container">
         <div class="container__form">
@@ -32,11 +36,12 @@
 
           <p>
             Don't Have An Account?
-            <span><a href="register.html">Register Now</a></span>
+            <span><a href="register.php">Register Now</a></span>
           </p>
         </div>
         <img src="food.jpg" alt="food" />
       </div>
     </header>
+    <?php include 'footer.php';?>
   </body>
 </html>

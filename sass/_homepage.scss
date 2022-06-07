@@ -63,7 +63,11 @@
            h2.title{
                text-align: center;
            }
-       
+        }
+
+        .card-container{
+            @include css-grid(1fr,'1fr 1fr');
+            gap: 20px;
 
            .card{
               @include card;
@@ -96,5 +100,5 @@
               }
               
            }
-
-   }
+        }
+   
