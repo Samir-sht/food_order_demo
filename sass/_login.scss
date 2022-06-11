@@ -41,7 +41,7 @@ header{
              
          }
  
-         input[type="email"], input[type="password"],input[type="text"]
+         input[type="email"], input[type="password"],input[type="text"],input[type="number"]
          {
              @include form-input-fields;
              font-family: $poppins;

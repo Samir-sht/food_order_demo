@@ -32,16 +32,7 @@
            .cart-img{
                 position: relative;
 
-                &::after{
-                    content: ' ';
-                    position: absolute;
-                    top:0;
-                    left: 35px;
-                    height: 18px;
-                    width: 18px;
-                    background-color: $clr_green;
-                    border-radius: 50%;
-                }
+               
            
            img{
                margin-right: 2rem;
@@ -66,20 +57,22 @@
         }
 
         .card-container{
-            @include css-grid(1fr,'1fr 1fr');
-            gap: 20px;
+            @include css-grid(1fr,'1fr 1fr 1fr');
+            gap: 30px;
 
            .card{
               @include card;
               @include css-flexbox(space-around,flex-start);
+              flex-direction: column;
 
               img{
                   @include image;
+                  aspect-ratio: 16/9;
               }
 
               &_body{
                   padding:1rem;
-
+                    width: 100%;
                   
                 .card_price{
                     font-weight: $font_bold;
