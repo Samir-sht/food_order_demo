@@ -81,7 +81,7 @@ if (mysqli_num_rows($result) > 0) {
             $i = 1;
             foreach ($data as $d) {
             ?>
-              <tr>
+              <tr class="text-capitalize">
                 <td><?php echo $i++; ?></td>
                 <td><?php echo $d['food_name']; ?></td>
                 <td><?php echo $d['food_desc']; ?></td>
