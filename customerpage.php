@@ -1,8 +1,8 @@
 <?php
-  // session_start();
-  // if(!isset($_SESSION['user'])){
-  //   header ('location:../index.php');
-  // }
+  session_start();
+  if(!isset($_SESSION['user'])){
+    header ('location:index.php');
+  }
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +24,12 @@
         <h2 class="logo_name"><a href="index.php">Madhyapur Restro</a></h2>
         
         <div class="cart">
-          
+          <p style="margin-right:1rem;"><?php echo $_SESSION['user'];?></p>
           <div class="cart-img">
             <!-- <img src="cart.svg" alt="cart"/> -->
            <a href="#" class="cart-store"> cart (<span>0</span>)</a>
           </div>
-          <a href="login.php" class="login">login</a>
+          <a href="logout.php" class="login">logout</a>
         </div>
       </nav>
 

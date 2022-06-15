@@ -9,6 +9,9 @@
       array_push($data,$row);
     }
   }
+
+  $sql1="SELECT * FROM users";
+  $result1=mysqli_query($con,$sql1);
 ?>
 
 <?php
@@ -22,7 +25,7 @@
             <?php echo $d['food_desc'] ?>
         </p>
         <p class="card_price">Rs <?php echo $d['food_price'] ?></p>
-        <a href="#" class="btn-cart">add to cart</a>
+        <a href="./cart/cart.php?cartid=<?php echo $d['food_id'];?>" class="btn-cart">add to cart</a>
     </div>
 </div>
 <?php } ?>

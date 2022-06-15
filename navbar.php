@@ -3,8 +3,9 @@
 
         <div class="cart">
           <div class="cart-img">
-            <img src="cart.svg" alt="cart" />
+            <!-- <img src="cart.svg" alt="cart"/> -->
+           <a href="#" class="cart-store"> cart (<span>0</span>)</a>
           </div>
-          <a href="login.php">login</a>
+          <a href="login.php" class="login">login</a>
         </div>
       </nav>

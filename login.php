@@ -1,12 +1,42 @@
 <?php  
     include './admin/config.php';
-
+    
     if(isset($_POST['login'])){
       $email=$_POST['email'];
       $pwd=$_POST['password'];
       // $Role=$_POST['role'];
 
+      if(empty($email)){
+        echo ("<script>
+        window.alert('Please Enter Email!!');
+        </script>");
 
+      }
+      
+       else if((!filter_var($email,FILTER_VALIDATE_EMAIL))){
+          echo ("<script>
+          window.alert('Please Enter Valid Email!!');
+          </script>");
+        }
+      
+
+      if(empty($pwd)){
+        
+        echo ("<script>
+        
+            window.alert('Please Enter Password !!');
+          </script>");
+      }
+    
+       else if((strlen($pwd)<8 || strlen($pwd)>25)){
+          echo ("<script>
+        
+          window.alert('Please Enter Password of 8 or more characters!!');
+        </script>");
+        }
+      
+
+      else{
       $sql="SELECT * FROM users WHERE email='$email' AND password='$pwd'";
       $result=mysqli_query($con,$sql);
 
@@ -19,17 +49,23 @@
             header('location:./admin/dashboard.php');
           }
           if($row['role']=="customer"){
-            echo "customer login";
+            header('location:customerpage.php');
           }
+
+          
+           
 
           }
 
         }
         else{
-          echo "login failed";
-        }
+          echo ("<script>
+            window.alert('Invalid Email and Password!!!');</script>");
+        
       }
-
+       
+      }
+    }
     
 ?>
 
@@ -55,11 +91,14 @@
   <header>
     <div class="container">
       <div class="container__form">
+      
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
          
           <h2>Login</h2>
+          
           <label>Email</label><br />
           <input type="email" name="email" /><br />
+         
           <label>Password</label><br />
           <input type="password" name="password" /><br />
          <!-- <label>Role:</label><br>

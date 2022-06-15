@@ -65,13 +65,13 @@ if (mysqli_num_rows($result) > 0) {
         <!---display food details --->
         <table class="table table-hover  mt-5">
           <thead class="">
-            <tr class="text-capitalize">
+            <tr class="text-capitalize ">
               <th scope="col">id</th>
               <th scope="col">name</th>
               <th scope="col">description</th>
               <th scope="col">price</th>
               <th scope="col">image</th>
-              <th scope="col">action</th>
+              <th colspan="2">action</th>
             </tr>
           </thead>
 
@@ -87,7 +87,7 @@ if (mysqli_num_rows($result) > 0) {
                 <td><?php echo $d['food_desc']; ?></td>
                 <td><?php echo $d['food_price']; ?></td>
                 <td><img src="../images/<?php echo $d['image'] ?>" height="150px" width="150px"></td>
-                <td colspan="2">
+                <td>
                   <button class="btn btn-warning"><a class="text-decoration-none text-white" href="updatefood.php?id=<?php echo $d['food_id'];?>">Edit</a></button>
                   <button class="btn btn-danger"> <a class="text-decoration-none text-white" href="deletefood.php?id=<?php echo $d['food_id']; ?>" onclick="return confirm('Are u sure to delete?')">Delete</a></button>
                 </td>

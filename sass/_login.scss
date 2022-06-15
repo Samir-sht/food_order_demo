@@ -13,6 +13,11 @@ header{
      background-color: $clr_black;
      color:$clr_white;
      font-family: $poppins;
+
+     .error{
+        background-color: $clr_red;
+        padding: 0 4rem;
+     }
  
      img{
       @include image;
@@ -24,6 +29,7 @@ header{
          flex-direction: column;
          padding:1.25rem 0;
      
+        
  
          h2{
              text-align: left;
