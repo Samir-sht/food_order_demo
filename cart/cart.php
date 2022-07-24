@@ -16,8 +16,6 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-
-
 ?>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -57,23 +55,34 @@ if (mysqli_num_rows($result) > 0) {
     </thead>
     <tbody>
         <?php 
-        $qty=$_POST['qty'];
+     
+        $qty=1;
           foreach($cart_data as $c){
+            if(isset($_POST['quantity'])){
+              $qty=$_POST['quantity'];
+            }
             ?>
             <tr>
             <td><img src="../images/<?php echo $c['image'] ?>" height="150px" width="150px"></td>
             <td><?php echo $c['food_name'];?></td>
             <td><?php echo $c['food_price']?></td>
-            <td><a href="#"><img src="../minus.svg" alt="minus"></a>
-        <input type="number" min="1" value="1" name="qty"><span name="plus"><img src="../plus.svg" alt="plus"></span>
+            <td>
+            <form action="" method="post">
+            <!-- <a href="#"><img src="../minus.svg" alt="minus"></a> -->
+           <input type="number" min="1" value="<?php echo $qty;?>" name="quantity">
+            <!-- <span name="plus"><img src="../plus.svg" alt="plus"></span>   -->
+          </form>
+       
             </td>
-            <td><?php echo $qty*$c['food_price'];?></td>
+            <td>
+            <?php echo $qty * $c['food_price'];?>
+           </td>
             <td><a class="delete" href="#">Delete from cart</a></td>
             </tr>
          <?php } ?>
             <tr>
          <td colspan="4" class="total">Total amount</td>
-              <td>1500</td>
+              <td><?php ?></td>
               </tr>
     </tbody>
             <tfoot>
