@@ -1,0 +1,71 @@
+.main-container > .container-sm{
+    width:100%;
+
+    h5.heading{
+        font-size: 1.25rem;
+        text-align: center;
+        font-weight: $font_bold;
+        
+    }
+   
+
+    table{
+        width:100%;
+        text-align: center;
+        border-collapse: collapse;
+
+        thead{
+            background-color:$clr_black;
+            color: $clr_white;
+            th{
+                @include capitalize;
+                padding:10px;
+               
+                
+            }
+           
+        }
+        tbody{
+            td{
+                a.delete{
+                    text-decoration: none;
+                    background-color: $clr_red;
+                    color: $clr_white;
+                    padding: 0.8rem 1.5rem;
+                    font-weight: $font_medium;
+                }
+                input[type="number"]{
+                    height: 25px;
+                    width: 50px;
+                  
+                    
+                    text-align: center
+                }
+
+               
+            }
+            td.total{
+                @include capitalize;
+                text-align: end;
+              }
+        }
+
+        tfoot{
+            tr{
+                height: 100px;
+            }
+          td{
+            @include capitalize;
+            a{
+                text-decoration: none;
+                background-color: $clr_red;
+                color: $clr_white;
+                padding: 0.5rem 1.5rem;
+                font-weight: $font_medium;
+                
+            }
+          }
+        }
+        
+    }
+}

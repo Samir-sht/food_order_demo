@@ -1,17 +1,22 @@
+
 <?php
+session_start();
 $id=$_GET['cartid'];
 	include '../admin/config.php';
 
-  $sql = "SELECT * FROM food where food_id=$id";
+$sql = "SELECT * FROM food where food_id=$id";
 $result = mysqli_query($con, $sql);
 $cart_data=[];
 if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_assoc($result)) {
+    
     array_push($cart_data, $row);
   }
 }
-  
-  
+
+
+
+
 
 ?>
 
@@ -25,12 +30,23 @@ if (mysqli_num_rows($result) > 0) {
 
 <link rel="stylesheet" href="../dist/css/style.min.css" />
 <div class="main-container">
-  <?php include '../navbar.php'; ?>
+<nav>
+        <h2 class="logo_name"><a href="../index.php">Madhyapur Restro</a></h2>
+
+        <div class="cart">
+       
+          <div class="cart-img">
+            <!-- <img src="cart.svg" alt="cart"/> -->
+           <a href="cart.php" class="cart-store"> cart (<span>0</span>)</a>
+          </div>
+          <a href="../login.php" class="login">login</a>
+        </div>
+      </nav>
 
 <div class="container-sm">
-  <h5>Shopping cart</h5>
+  <h5 class="heading">Shopping cart</h5>
   <div class="row">
-  <table class="table mt-3">
+  <table>
     <thead>
       <th>image</th>
       <th>name</th>
@@ -41,24 +57,37 @@ if (mysqli_num_rows($result) > 0) {
     </thead>
     <tbody>
         <?php 
-        $quantity=1;
+        $qty=$_POST['qty'];
           foreach($cart_data as $c){
             ?>
             <tr>
             <td><img src="../images/<?php echo $c['image'] ?>" height="150px" width="150px"></td>
             <td><?php echo $c['food_name'];?></td>
             <td><?php echo $c['food_price']?></td>
-            <td><?php echo $quantity;?></td>
-            <td><?php echo $quantity*$c['food_price'];?></td>
+            <td><a href="#"><img src="../minus.svg" alt="minus"></a>
+        <input type="number" min="1" value="1" name="qty"><span name="plus"><img src="../plus.svg" alt="plus"></span>
+            </td>
+            <td><?php echo $qty*$c['food_price'];?></td>
+            <td><a class="delete" href="#">Delete from cart</a></td>
             </tr>
          <?php } ?>
-
-         
-    
+            <tr>
+         <td colspan="4" class="total">Total amount</td>
+              <td>1500</td>
+              </tr>
     </tbody>
+            <tfoot>
+             
+              <tr>
+              <td colspan="3"></td>
+            <td><a href="#">Proceed to checkout</a></td></tr>
+            </tfoot>
+           
+    </table>
     </div>
       </div>
-  </table>
+   
+  
 </div>
 
 
