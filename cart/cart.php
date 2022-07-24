@@ -41,13 +41,15 @@ if (mysqli_num_rows($result) > 0) {
     </thead>
     <tbody>
         <?php 
-        $total=0;
+        $quantity=1;
           foreach($cart_data as $c){
             ?>
             <tr>
             <td><img src="../images/<?php echo $c['image'] ?>" height="150px" width="150px"></td>
             <td><?php echo $c['food_name'];?></td>
             <td><?php echo $c['food_price']?></td>
+            <td><?php echo $quantity;?></td>
+            <td><?php echo $quantity*$c['food_price'];?></td>
             </tr>
          <?php } ?>
 
