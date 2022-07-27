@@ -49,6 +49,33 @@
                 @include capitalize;
                 text-align: end;
               }
+
+              td > form > button.btn-remove{
+                border: none;
+                text-transform: capitalize;
+                background-color: $clr_red;
+                color: $clr_white;
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+                font-weight: $font_normal;
+                transition: 0.4s ease-in-out;
+                font-family: $poppins;
+              }
+
+              tr.checkout{
+                height: 100px;
+            }
+          td{
+            @include capitalize;
+            a{
+                text-decoration: none;
+                background-color: $clr_red;
+                color: $clr_white;
+                padding: 0.5rem 1.5rem;
+                font-weight: $font_medium;
+                
+            }
+          }
         }
 
         tfoot{

@@ -1,10 +1,5 @@
 <?php
-  // session_start();
-  // if(!isset($_SESSION['user'])){
-  //   header ('location:../index.php');
-  // }
-
-    session_start();
+  session_start();
 
     include './admin/config.php';
 
@@ -33,13 +28,13 @@
             
             if(empty($_SESSION["shopping_cart"])) {
                 $_SESSION["shopping_cart"] = $cartArray;
-                $status = "<div class='box'>Product is added to your cart!</div>";
+                $status = "<div class='box'>food item added to cart!</div>";
             }
             else{
                 $array_keys = array_keys($_SESSION["shopping_cart"]);
                 if(in_array($code,$array_keys)) {
-                $status = "<div class='box' style='color:red;'>
-                Product is already added to your cart!</div>";	
+                $status = "<div class='in_box'>
+                food item is already in cart!</div>";	
                 } else {
                 $_SESSION["shopping_cart"] = array_merge(
                 $_SESSION["shopping_cart"],
@@ -73,6 +68,7 @@
         <h2 class="logo_name"><a href="index.php">Madhyapur Restro</a></h2>
 
         <div class="cart">
+
           <div class="cart-img"> 
             <!-- <img src="cart.svg" alt="cart"/> -->
            <!-- <a href="./cart/carts.php" class="cart-store"> cart (<span>0</span>)</a> -->
@@ -81,7 +77,7 @@
               if(!empty($_SESSION["shopping_cart"])) {
               $cart_count = count(array_keys($_SESSION["shopping_cart"]));
               ?>
-        <a href="cart.php" class="Cart" >Cart (<span><?php echo $cart_count; ?>)</span></a>
+        <a href="./cart/carts.php" class="Cart" >Cart (<span><?php echo $cart_count; ?>)</span></a>
 
             <?php
             }
@@ -109,7 +105,7 @@ while($row = mysqli_fetch_assoc($result)){
   <input type='hidden' name='code' value=".$row['food_id']." />
   <div class='name card_title'>".$row['food_name']."</div>
   <div class='desc card_desc'>".$row['food_desc']."</div>
-  <div class='price card_price'>$".$row['food_price']."</div>
+  <div class='price card_price'>Rs ".$row['food_price']."</div>
   <button type='submit' class='buy btn-cart'>Add to cart</button>
   </div>
   </form>
@@ -119,9 +115,6 @@ mysqli_close($con);
 ?>
 
 
-
-
-     
     </div>
   </div>
   <?php include 'footer.php'; ?>

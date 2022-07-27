@@ -7,13 +7,14 @@ if(!empty($_SESSION["shopping_cart"])) {
       if($_POST["code"] == $value["code"]){
       unset($_SESSION["shopping_cart"][$key]);
       $status = "<div class='box' style='color:red;'>
-      Product is removed from your cart!</div>";
+      Product is removed from cart!</div>";
       }
     
       if(empty($_SESSION["shopping_cart"]))
       unset($_SESSION["shopping_cart"]);
       }		
-    
+
+     
 }
 }
 
@@ -22,8 +23,11 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
     if($value['code'] === $_POST["code"]){
         $value['quantity'] = $_POST["quantity"];
         break; // Stop the loop after we've found the product
+
     }
+  
 }
+
   	
 }
 ?>
@@ -38,10 +42,10 @@ if(isset($_SESSION["shopping_cart"])){
 <tbody>
 <tr>
 <td></td>
-<td>ITEM NAME</td>
+<td>FOOD NAME</td>
 <td>QUANTITY</td>
 <td>UNIT PRICE</td>
-<td>ITEMS TOTAL</td>
+<td>SUBTOTAL</td>
 </tr>	
 <?php		
 foreach ($_SESSION["shopping_cart"] as $product){
