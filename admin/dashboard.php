@@ -36,8 +36,8 @@
               <li><a href="dashboard.php" class="font active">Dashboard</a></li>
               <li><a href="food.php">Food</a></li>
               <li><a href="#">Orders</a></li>
-              <li><a href="#">Customer Details</a></li>
-              <li><a href="#">Users</a></li>
+              <li><a href="customerdetails.php">Customer Details</a></li>
+             
               <li><a href="../logout.php">logout</a></li>
             </ul>
           </nav>

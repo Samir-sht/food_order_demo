@@ -43,8 +43,8 @@ if (mysqli_num_rows($result) > 0) {
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="food.php" class="font active">Food</a></li>
             <li><a href="#">Orders</a></li>
-            <li><a href="#">Customer Details</a></li>
-            <li><a href="#">Users</a></li>
+            <li><a href="customerdetails.php">Customer Details</a></li>
+            
             <li><a href="../login.php">logout</a></li>
           </ul>
         </nav>
@@ -86,9 +86,9 @@ if (mysqli_num_rows($result) > 0) {
                 <td><?php echo $d['food_name']; ?></td>
                 <td><?php echo $d['food_desc']; ?></td>
                 <td><?php echo $d['food_price']; ?></td>
-                <td><img src="../images/<?php echo $d['image'] ?>" height="150px" width="150px"></td>
+                <td><img src="../images/<?php echo $d['image']; ?>" height="150px" width="150px"></td>
                 <td>
-                  <button class="btn btn-warning"><a class="text-decoration-none text-white" href="updatefood.php?id=<?php echo $d['food_id'];?>">Edit</a></button>
+                  <button class="btn btn-success"><a class="text-decoration-none text-white" href="updatefood.php?id=<?php echo $d['food_id'];?>">Edit</a></button>
                   <button class="btn btn-danger"> <a class="text-decoration-none text-white" href="deletefood.php?id=<?php echo $d['food_id']; ?>" onclick="return confirm('Are u sure to delete?')">Delete</a></button>
                 </td>
               </tr>

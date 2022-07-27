@@ -10,8 +10,6 @@
     }
   }
 
-  $sql1="SELECT * FROM users";
-  $result1=mysqli_query($con,$sql1);
 ?>
 
 <?php

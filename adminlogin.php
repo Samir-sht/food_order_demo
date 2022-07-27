@@ -2,7 +2,7 @@
     include './admin/config.php';
     
     $erremail=$errpwd=$error=" ";
-    if(isset($_POST['customerlogin'])){
+    if(isset($_POST['login'])){
       $email=$_POST['email'];
       $pwd=$_POST['password'];
       // $Role=$_POST['role'];
@@ -14,13 +14,12 @@
         $erremail="Please Enter  Email!";  
       }
       
-       else{ if((!filter_var($email,FILTER_VALIDATE_EMAIL))){
+       else if((!filter_var($email,FILTER_VALIDATE_EMAIL))){
           // echo ("<script>
           // window.alert('Please Enter Valid Email!!');
           // </script>");
           $erremail="Please Enter valid Email!";  
         }
-      }
       
 
       if(empty($pwd)){
@@ -31,17 +30,17 @@
         //   </script>");
       }
     
-      //  if((strlen($pwd)<8 || strlen($pwd)>25)){
-      //   //   echo ("<script>
-      //   //   window.alert('Please Enter Password of 8 or more characters!!');
-      //   // </script>");
-      //   $errpwd="Please Enter Password of 8 or more characters!";  
+    //    else if((strlen($pwd)<8 || strlen($pwd)>25)){
+    //     //   echo ("<script>
+    //     //   window.alert('Please Enter Password of 8 or more characters!!');
+    //     // </script>");
+    //     $errpwd="Please Enter Password of 8 or more characters!";  
 
-      //   }
+    //     }
       
 
       else{
-      $sql="SELECT * FROM customers WHERE email='$email' AND password='$pwd'";
+      $sql="SELECT * FROM admin WHERE email='$email' AND password='$pwd'";
       $result=mysqli_query($con,$sql);
 
       if(mysqli_num_rows($result)>0){
@@ -49,7 +48,8 @@
 
            session_start();
           $_SESSION['user'] = $row['fullname'];
-            header('location:customerpage.php');
+            header('location:./admin/dashboard.php');
+
           }
 
         }
@@ -90,7 +90,7 @@
       
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
          
-          <h2>Customer Login</h2>
+          <h2>Admin Login</h2>
           <div>
           <label>Email</label><br />
           <input type="email" name="email" />
@@ -108,15 +108,11 @@
          <input type="radio" name="role" value="admin">admin
           <input type="radio" name="role" value="customer">customer <br> -->
 
-          <input type="submit" name="customerlogin" value="login" />
+          <input type="submit" name="login" value="login" />
         </form>
 
-        <p>
-          Don't Have An Account?
-          <span><a href="register.php">Register Now</a></span>
-        </p>
 
-        <p class="admin">Login as <span><a href="adminlogin.php" >Admin</a></span></p>
+        <p >Login as <span><a href="login.php" >Customer</a></span></p>
       </div>
       <img src="food.jpg" alt="food" />
     </div>

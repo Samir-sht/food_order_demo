@@ -41,15 +41,15 @@
            @include css-flexbox(center,center);
           
            .cart-img{
+            a{
                 position: relative;
-
-               
-           
-           img{
-               margin-right: 2rem;
+                text-decoration: none;
+                text-transform: capitalize;
+                margin-right: 2rem;
+                color: $clr_black;
+                font-weight: $font_medium;
               
-              }
-
+            }
               
            }
 
@@ -73,31 +73,45 @@
 
            .card{
               @include card;
-              @include css-flexbox(space-around,flex-start);
+              @include css-flexbox(none,flex-start);
               flex-direction: column;
 
               img{
-                  @include image;
+                //   @include image;
+                height:250px;
+                width:300px;
+                object-fit: cover;
                   aspect-ratio: 16/9;
               }
 
               &_body{
                   padding:1rem;
                 
-                  
+                  .card_title{
+                    text-transform: capitalize;
+                    font-weight: $font_medium;
+                    margin-bottom: 8px;
+                  }
                 .card_price{
                     font-weight: $font_bold;
+                    margin: 8px 0;
                  
                 }
 
                 .btn-cart{
-                    text-decoration: none;
+                    border: none;
                     text-transform: capitalize;
                     background-color: $clr_red;
                     color: $clr_white;
                     padding: 0.5rem 1rem;
                     font-size: 0.8rem;
                     font-weight: $font_normal;
+                    transition: 0.4s ease-in-out;
+
+                    &:hover{
+                        cursor: pointer;
+                        background-color: $clr_green;
+                    }
                 }
 
 

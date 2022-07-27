@@ -1,6 +1,9 @@
 
 <?php
 session_start();
+if(!isset($_SESSION['user'])){
+  header ('location:index.php');
+}
 $id=$_GET['cartid'];
 	include '../admin/config.php';
 
@@ -30,9 +33,8 @@ if (mysqli_num_rows($result) > 0) {
 <div class="main-container">
 <nav>
         <h2 class="logo_name"><a href="../index.php">Madhyapur Restro</a></h2>
-
+            
         <div class="cart">
-       
           <div class="cart-img">
             <!-- <img src="cart.svg" alt="cart"/> -->
            <a href="cart.php" class="cart-store"> cart (<span>0</span>)</a>
@@ -50,7 +52,7 @@ if (mysqli_num_rows($result) > 0) {
       <th>name</th>
       <th>price</th>
       <th>quantity</th>
-      <th>total</th>
+      <th>total price</th>
       <th>action</th>
     </thead>
     <tbody>
@@ -61,6 +63,8 @@ if (mysqli_num_rows($result) > 0) {
             if(isset($_POST['quantity'])){
               $qty=$_POST['quantity'];
             }
+
+         
             ?>
             <tr>
             <td><img src="../images/<?php echo $c['image'] ?>" height="150px" width="150px"></td>
@@ -69,27 +73,32 @@ if (mysqli_num_rows($result) > 0) {
             <td>
             <form action="" method="post">
             <!-- <a href="#"><img src="../minus.svg" alt="minus"></a> -->
-           <input type="number" min="1" value="<?php echo $qty;?>" name="quantity">
+           <input type="number" min="1"  max ="10" value="<?php echo $qty;?>" name="quantity" class="qty">
             <!-- <span name="plus"><img src="../plus.svg" alt="plus"></span>   -->
           </form>
        
             </td>
             <td>
-            <?php echo $qty * $c['food_price'];?>
+            <?php echo $totalamt=$qty * $c['food_price'];?>
            </td>
             <td><a class="delete" href="#">Delete from cart</a></td>
             </tr>
-         <?php } ?>
             <tr>
          <td colspan="4" class="total">Total amount</td>
-              <td><?php ?></td>
+         <td><?php $total=0;
+         $total+=$totalamt;
+         echo $total;
+         ?></td>
+              <td></td>
               </tr>
+         <?php } ?>
+            
     </tbody>
             <tfoot>
              
               <tr>
               <td colspan="3"></td>
-            <td><a href="#">Proceed to checkout</a></td></tr>
+            <td><a href="checkout.php">Proceed to checkout</a></td></tr>
             </tfoot>
            
     </table>
