@@ -64,7 +64,7 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 
 <div class="container-sm">
   <h5 class="heading">Shopping cart</h5>
-  <div class="message_box" style="margin:10px 0px;">
+  <div class="message_box" style="margin:10px 0px;" onclick="this.remove();">
 <?php echo $status; ?>
 </div>
   <?php
@@ -124,16 +124,15 @@ foreach ($_SESSION["shopping_cart"] as $product){
             <td><a href="checkout.php">Proceed to checkout</a></td>
         </tr>
     </tbody>
-            <tfoot>
-           
+
+        <tfoot>
            <?php
-}else{
-	echo "<h3>Your cart is empty!</h3>";
-	}
-?>
+        }else{
+          echo "<h3>Your cart is empty!</h3>";
+          }
+        ?>
               
-           
-            </tfoot>
+        </tfoot>
            
     </table>
     </div>
@@ -143,7 +142,7 @@ foreach ($_SESSION["shopping_cart"] as $product){
 </div>
 
 <script>
-    // Select your input element.
+    // disable negative values
 var number = document.getElementById('number');
 
 // Listen for input event on numInput.
