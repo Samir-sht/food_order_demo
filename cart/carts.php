@@ -7,8 +7,8 @@ if(!empty($_SESSION["shopping_cart"])) {
     foreach($_SESSION["shopping_cart"] as $key => $value) {
       if($_POST["code"] == $value["code"]){
       unset($_SESSION["shopping_cart"][$key]);
-      $status = "<div class='box' style='color:red;'>
-      food item is removed from cart!</div>";
+      $status = "<div class='box''>
+      food item  removed from cart!</div>";
       }
     
       if(empty($_SESSION["shopping_cart"]))
@@ -23,9 +23,10 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
     if($value['code'] === $_POST["code"]){
         $value['quantity'] = $_POST["quantity"];
         break; // Stop the loop after we've found the product
+    
     }
 }
-  	
+	
 }
 
 
@@ -88,12 +89,12 @@ foreach ($_SESSION["shopping_cart"] as $product){
             <tr>
             <td><img src='../images/<?php echo $product["image"]; ?>' width="150px" height="150px" /></td>
             <td><?php echo $product["name"];?></td>
-            <td><?php echo "Rs".$product["price"]; ?></td>
+            <td><?php echo "Rs"." ".$product["price"]; ?></td>
             <td>
             <form method='post' action=''>
                 <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
                 <input type='hidden' name='action' value="change" />
-                <input type="number" min="1" name='quantity' class="quantity" onchange="this.form.submit()" 
+                <input type="number" id="number" min="1" name='quantity' class="quantity" onchange="this.form.submit()" 
                 value="<?php echo $product["quantity"];?>">
 
                 </form>
@@ -141,4 +142,16 @@ foreach ($_SESSION["shopping_cart"] as $product){
   
 </div>
 
+<script>
+    // Select your input element.
+var number = document.getElementById('number');
 
+// Listen for input event on numInput.
+number.onkeydown = function(e) {
+    if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8)) {
+        return false;
+    }
+}
+</script>
