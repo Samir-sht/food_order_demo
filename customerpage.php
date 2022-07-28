@@ -5,8 +5,7 @@
   // }
 
     session_start();
-    if(isset($_SESSION['user'])){
-      // header('location:../index.php');
+   
     
     include './admin/config.php';
 
@@ -52,7 +51,7 @@
             
              }
      }
-    }
+    
     else{
       header('location:index.php');
     }
@@ -75,7 +74,7 @@
 <body>
   <div class="main-container">
   <nav>
-        <h2 class="logo_name"><a href="index.php">Madhyapur Restro</a></h2>
+        <h2 class="logo_name"><a href="customerpage.php">Madhyapur Restro</a></h2>
 
         <div class="cart">
          <p style="margin-right:1rem;"></a> <?php echo $_SESSION['user'];?></p>
@@ -88,7 +87,7 @@
               if(!empty($_SESSION["shopping_cart"])) {
               $cart_count = count(array_keys($_SESSION["shopping_cart"]));
               ?>
-        <a href="cart.php" class="Cart" >Cart (<span><?php echo $cart_count; ?>)</span></a>
+        <a href="./cart/carts.php" class="Cart" >Cart (<span><?php echo $cart_count; ?>)</span></a>
 
             <?php
             }

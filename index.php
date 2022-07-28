@@ -1,5 +1,6 @@
 <?php
   session_start();
+  
 
     include './admin/config.php';
 
@@ -32,18 +33,21 @@
             }
             else{
                 $array_keys = array_keys($_SESSION["shopping_cart"]);
+                
                 if(in_array($code,$array_keys)) {
+                   
                 $status = "<div class='in_box'>
                 food item is already in cart!</div>";	
-                } else {
-                $_SESSION["shopping_cart"] = array_merge(
-                $_SESSION["shopping_cart"],
-                $cartArray
-                );
-                $status = "<div class='box'>Product is added to your cart!</div>";
+                }
+
+                else{
+                $_SESSION["shopping_cart"] +=$cartArray; 
+                
+                $status = "<div class='box'>food item added to cart!</div>";
                 }
             
-             }
+          }
+             
      }
     
 ?>

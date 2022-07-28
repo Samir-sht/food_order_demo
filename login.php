@@ -49,6 +49,7 @@
         while($row=mysqli_fetch_assoc($result)){
 
            session_start();
+           $_SESSION['loggedin'] = true;
           $_SESSION['user'] = $row['fullname'];
             header('location:customerpage.php');
           }
