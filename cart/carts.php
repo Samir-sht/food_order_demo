@@ -49,10 +49,10 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 <link rel="stylesheet" href="../dist/css/style.min.css" />
 <div class="main-container">
 <nav>
-        <h2 class="logo_name"><a href="../index.php">Madhyapur Restro</a></h2>
+        <h2 class="logo_name"><a href="../customerpage.php">Madhyapur Restro</a></h2>
             
         <div class="cart">
-        
+        <!-- <p style="margin-right:1rem;"><?php echo $_SESSION['user'];?></p> -->
           <div class="cart-img">
           <?php
               if(!empty($_SESSION["shopping_cart"])) {

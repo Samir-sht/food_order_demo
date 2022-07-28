@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!($_SESSION['loggedin'])== 'true') {
+if (!($_SESSION['user'])) {
 header ("Location: ../login.php");
 }
 else{
