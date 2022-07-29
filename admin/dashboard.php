@@ -44,7 +44,7 @@
         </div>
         <div class="col-sm-10 p-3">
           <div class="row">
-            <h5 class="text-end h5 fw-normal p-2">Welcome <?php echo $_SESSION['user'];?></h5>
+            <h5 class="text-end h5 fw-normal p-2">Welcome <?php echo $_SESSION['admin'];?></h5>
             <hr>
           </div>
         <p class="text-capitalize">welcome to dashboard</p>

@@ -50,6 +50,7 @@
 
            session_start();
           $_SESSION['user'] = $row['fullname'];
+          $_SESSION['customerid'] = $row['customer_id'] ;
             header('location:customerpage.php');
           }
 

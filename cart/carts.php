@@ -52,7 +52,8 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
         <h2 class="logo_name"><a href="../customerpage.php">Madhyapur Restro</a></h2>
             
         <div class="cart">
-        <!-- <p style="margin-right:1rem;"><?php echo $_SESSION['user'];?></p> -->
+        <p style="margin-right:1rem;">
+        <?php if(isset($_SESSION['user'])){ echo $_SESSION['user'];}?></p>
           <div class="cart-img">
           <?php
               if(!empty($_SESSION["shopping_cart"])) {
@@ -100,7 +101,7 @@ foreach ($_SESSION["shopping_cart"] as $product){
             <form method='post' action=''>
                 <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
                 <input type='hidden' name='action' value="change" />
-                <input type="number" id="number" min="1" name='quantity' class="quantity" onchange="this.form.submit()" 
+                <input type="number" id="number" min="1" max="20" name='quantity' class="quantity" onchange="this.form.submit()" 
                 value="<?php echo $product["quantity"];?>">
 
                 </form>
@@ -127,6 +128,7 @@ foreach ($_SESSION["shopping_cart"] as $product){
         </tr>
         <tr class="checkout">
         <td colspan="3"></td>
+        
             <td><a href="checkout.php">Proceed to checkout</a></td>
         </tr>
 

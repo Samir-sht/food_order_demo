@@ -47,7 +47,7 @@
         while($row=mysqli_fetch_assoc($result)){
 
            session_start();
-          $_SESSION['user'] = $row['fullname'];
+          $_SESSION['admin'] = $row['fullname'];
             header('location:./admin/dashboard.php');
 
           }
