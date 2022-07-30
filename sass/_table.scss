@@ -7,16 +7,23 @@
         font-weight: $font_bold;
         
     }
-   
-
+ 
+   table.order-history{
+    border: 1px solid #dee2e6;
+    td{
+        border: 1px solid #dee2e6;
+    }
+   }
     table{
         width:100%;
         text-align: center;
         border-collapse: collapse;
+    
 
         thead{
             background-color:$clr_black;
             color: $clr_white;
+
             th{
                 @include capitalize;
                 padding:10px;
@@ -26,7 +33,9 @@
            
         }
         tbody{
+            // border: 1px solid #dee2e6;
             td{
+                
                 a.delete{
                     text-decoration: none;
                     background-color: $clr_red;

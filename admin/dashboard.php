@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(!isset($_SESSION['user'])){
+  if(!isset($_SESSION['admin'])){
     header ('location:../index.php');
   }
   ?>
@@ -32,12 +32,12 @@
         <div class="col-sm-2  px-4 ">
           <h5 class="text-white text-uppercase pt-4 mb-2 underline">Food Ordering System</h5>
           <nav class="">
-            <ul>
+            <ul class="text-capitalize">
               <li><a href="dashboard.php" class="font active">Dashboard</a></li>
               <li><a href="food.php">Food</a></li>
-              <li><a href="#">Orders</a></li>
+              <li><a href="orders.php">Orders</a></li>
               <li><a href="customerdetails.php">Customer Details</a></li>
-             
+              <li><a href="salesreport.php">sales report</a></li>
               <li><a href="../logout.php">logout</a></li>
             </ul>
           </nav>

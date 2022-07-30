@@ -1,12 +1,12 @@
 <?php
   session_start();
-  if(!isset($_SESSION['user'])){
+  if(!isset($_SESSION['admin'])){
     header ('location:../index.php');
   }
   ?>
 <?php
 include 'config.php';
-$sql = "SELECT * FROM food";
+$sql = "SELECT * FROM food ORDER BY food_name ASC";
 $result = mysqli_query($con, $sql);
 $data = [];
 if (mysqli_num_rows($result) > 0) {
@@ -39,19 +39,19 @@ if (mysqli_num_rows($result) > 0) {
       <div class="col-sm-2  px-4 ">
         <h5 class="text-white text-uppercase pt-4 ">Food Ordering System</h5>
         <nav class="">
-          <ul>
+          <ul class="text-capitalize">
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="food.php" class="font active">Food</a></li>
-            <li><a href="#">Orders</a></li>
+            <li><a href="orders.php">Orders</a></li>
             <li><a href="customerdetails.php">Customer Details</a></li>
-            
+             <li><a href="salesreport.php">sales report</a></li>
             <li><a href="../login.php">logout</a></li>
           </ul>
         </nav>
       </div>
       <div class="col-sm-10 p-3">
         <div class="row">
-          <h5 class="text-end h5 fw-normal p-2">Welcome <?php echo $_SESSION['user'];?></h5>
+          <h5 class="text-end h5 fw-normal p-2">Welcome <?php echo $_SESSION['admin'];?></h5>
           <hr>
         </div>
         <p class="text-capitalize h4 ">food details</p>
@@ -63,10 +63,10 @@ if (mysqli_num_rows($result) > 0) {
 
 
         <!---display food details --->
-        <table class="table table-hover  mt-5">
-          <thead class="">
+        <table class="table table-bordered  mt-5">
+          <thead class="table-dark">
             <tr class="text-capitalize ">
-              <th scope="col">id</th>
+              <th scope="col">S.N</th>
               <th scope="col">name</th>
               <th scope="col">description</th>
               <th scope="col">price</th>
@@ -84,7 +84,7 @@ if (mysqli_num_rows($result) > 0) {
               <tr class="text-capitalize">
                 <td><?php echo $i++; ?></td>
                 <td><?php echo $d['food_name']; ?></td>
-                <td><?php echo $d['food_desc']; ?></td>
+                <td class="w-25"><?php echo $d['food_desc']; ?></td>
                 <td><?php echo $d['food_price']; ?></td>
                 <td><img src="../images/<?php echo $d['image']; ?>" height="150px" width="150px"></td>
                 <td>

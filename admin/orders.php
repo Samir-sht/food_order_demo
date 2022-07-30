@@ -6,7 +6,7 @@
   ?>
 <?php
 include 'config.php';
-$sql = "SELECT * FROM customers ORDER BY fullname ASC";
+$sql = "SELECT * FROM orders ORDER BY order_date DESC";
 $result = mysqli_query($con, $sql);
 $data = [];
 if (mysqli_num_rows($result) > 0) {
@@ -38,12 +38,12 @@ if (mysqli_num_rows($result) > 0) {
     <div class="row min-vh-100">
       <div class="col-sm-2  px-4 ">
         <h5 class="text-white text-uppercase pt-4 ">Food Ordering System</h5>
-        <nav class="">
-          <ul class="text-capitalize">
+        <nav class="text-capitalize">
+          <ul>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="food.php">Food</a></li>
-            <li><a href="orders.php">Orders</a></li>
-            <li><a href="customerdetails.php" class="font active">Customer Details</a></li>
+            <li><a href="orders.php" class="font active">Orders</a></li>
+            <li><a href="customerdetails.php" >Customer Details</a></li>
            <li><a href="salesreport.php">sales report</a></li>
             <li><a href="../login.php">logout</a></li>
           </ul>
@@ -54,48 +54,59 @@ if (mysqli_num_rows($result) > 0) {
           <h5 class="text-end h5 fw-normal p-2">Welcome <?php echo $_SESSION['admin'];?></h5>
           <hr>
         </div>
-        <p class="text-capitalize h4 ">Customer details</p>
+        <p class="text-capitalize h4 ">Order details</p>
 
         <!---display food details --->
-        <table class="table table-bordered  mt-3">
+        <table class="table table-bordered mt-3">
           <thead class="table-dark">
             <tr class="text-capitalize ">
-              <th scope="col">S.N</th>
-              <th scope="col">fullname</th>
-              <th scope="col">email</th>
-              <th scope="col">phone number</th>
-              
-              <th colspan="2">action</th>
+            <th>S.N</th>
+            <th>Customer ID</th>
+            <th>Food item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Order Date</th>
+            <th>Change Status</th>
+            <th>Action</th>
             </tr>
           </thead>
 
 
-          <tbody>
-            <?php
-            $i = 1;
+          <?php
+            $i=1;
             foreach ($data as $d) {
-            ?>
-              <tr class="">
-                <td><?php echo $i++; ?></td>
-                <td><?php echo $d['fullname']; ?></td>
-                <td><?php echo $d['email']; ?></td>
-                <td><?php echo $d['phone_number']; ?></td>
-               
-                <td>
-                 
-                  <button class="btn btn-danger"> <a class="text-decoration-none text-white" href="deletecustomer.php?id=<?php echo $d['customer_id']; ?>" onclick="return confirm('Are u sure to delete?')">Delete</a></button>
-                </td>
-              </tr>
-            <?php } ?>
+          ?> 
+          <tbody>
+            <tr>
+            <td><?php echo $i++; ?></td>
+            <td><?php echo $d['customer_id']; ?></td>
+            <td><?php echo $d['food_items']; ?></td>
+            <td><?php echo $d['order_qty'];?></td>
+            <td><?php echo $d['food_price'];?></td>
+            <td><?php echo $d['total_amount'];?></td>
+            <td><?php echo $d['order_status'];?></td>
+            <td><?php echo $d['order_date'];?></td>
+            <td>
+              <form action="updateorder.php" method="post">              
+                <select name="status" onchange="form.submit()" class="form-select  form-select-sm">
+                  <option>Select</option>
+                  <option value="Delivered">Delivered</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Cancelled">Cancelled</option>
+                </select>
+                <input type="hidden" name="id" value="<?php echo $d['order_number']; ?>" >
+              </form>
+            </td>
+            <td>
+              <button class="btn btn-danger"><a class="text-decoration-none text-white" href="deleteorder.php?id=<?php echo $d['order_number'];?>" onclick="return confirm('Are you sure you want to cancel your order?');">Delete</a> </button>
+            </td>
+            </tr>
           </tbody>
+          <?php } ?>
         </table>
 
-        
-
-
-
-
-            
 
         </div>
       </div>
@@ -106,14 +117,7 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-  <script>
-    var myModal = document.getElementById('myModal')
-    var myInput = document.getElementById('myInput')
-
-    myModal.addEventListener('shown.bs.modal', function() {
-      myInput.focus()
-    });
-  </script>
+ 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 

@@ -48,10 +48,25 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 
 <link rel="stylesheet" href="../dist/css/style.min.css" />
 <div class="main-container">
-<nav>
-        <h2 class="logo_name"><a href="../customerpage.php">Madhyapur Restro</a></h2>
+    <nav>
+        <h2 class="logo_name">
+                  <?php
+          if(isset($_SESSION['user'])){
+          echo "<a href='../customerpage.php'>Madhyapur Restro</a>";
+      }
+      
+         else{
+         echo "<a href='../index.php'>Madhyapur Restro</a>";
+     }
+         ?>
+
+            </h2>
             
         <div class="cart">
+                <?php
+          if(isset($_SESSION['user'])){
+          echo "<a class='orderhistory' href='order-view.php'>order history</a>";
+      }?>
         <p style="margin-right:1rem;">
         <?php if(isset($_SESSION['user'])){ echo $_SESSION['user'];}?></p>
           <div class="cart-img">
@@ -59,14 +74,23 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
               if(!empty($_SESSION["shopping_cart"])) {
               $cart_count = count(array_keys($_SESSION["shopping_cart"]));
               ?>
-        <a href="./cart/carts.php" class="Cart" >Cart (<span><?php echo $cart_count; ?>)</span></a>
+        <a href="carts.php" class="Cart" >Cart (<span><?php echo $cart_count; ?>)</span></a>
 
             <?php
             }
             ?>
           </div>
-          <a href="../login.php" class="login">login</a>
-        </div>
+         <?php
+          if(isset($_SESSION['user'])){
+          echo "<a href='../logout.php' class='login'>logout</a>";
+      }
+      
+         else{
+         echo "<a href='../login.php' class='login'>login</a>";
+     }
+         ?>
+                </div>
+        
       </nav>
 
 <div class="container-sm">
@@ -101,7 +125,7 @@ foreach ($_SESSION["shopping_cart"] as $product){
             <form method='post' action=''>
                 <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
                 <input type='hidden' name='action' value="change" />
-                <input type="number" id="number" min="1" max="20" name='quantity' class="quantity" onchange="this.form.submit()" 
+                <input type="number" id="number" min="1" max="20" name='quantity' class="quantity"  onchange="this.form.submit()" 
                 value="<?php echo $product["quantity"];?>">
 
                 </form>

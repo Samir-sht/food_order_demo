@@ -14,11 +14,11 @@
                 @include a;
                 color: $clr_red;
             }
+            
         }
 
        .cart a.cart-store{
            text-decoration: none;
-           
         //   background-color: $clr_red;
           color: $clr_black;
         //   padding: 0.8rem 2rem;
@@ -26,6 +26,16 @@
           font-size: 1rem;
           font-weight: $font_medium;
        }
+
+       .cart a.orderhistory{
+        text-decoration: none;
+     //   background-color: $clr_red;
+       color: $clr_black;
+     //   padding: 0.8rem 2rem;
+     margin-right: 1.5rem;
+       font-size: 1rem;
+       font-weight: $font_medium;
+    }
 
        .cart a.login{
         text-decoration: none;

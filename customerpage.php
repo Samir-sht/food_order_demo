@@ -3,13 +3,12 @@
   // if(!isset($_SESSION['user'])){
   //   header ('location:../index.php');
   // }
+  session_start();
+  
 
-    session_start();
-    if(isset($_SESSION['user'])){
-      // header('location:../index.php');
-    
     include './admin/config.php';
 
+    if(isset($_SESSION['user'])){
     $status=" ";
 
     if(isset($_POST['code']) && $_POST['code']!==""){
@@ -39,23 +38,25 @@
             }
             else{
                 $array_keys = array_keys($_SESSION["shopping_cart"]);
+                
                 if(in_array($code,$array_keys)) {
+                   
                 $status = "<div class='in_box'>
-                food item is already in cart!</div>";	
-                } else {
-                $_SESSION["shopping_cart"] = array_merge(
-                $_SESSION["shopping_cart"],
-                $cartArray
-                );
-                $status = "<div class='box'>Product is added to your cart!</div>";
+                food item is already in cart!</div>";   
+                }
+
+                else{
+                $_SESSION["shopping_cart"] +=$cartArray; 
+                
+                $status = "<div class='box'>food item added to cart!</div>";
                 }
             
-             }
-     }
-    }
-    else{
-      header('location:index.php');
-    }
+          }
+      }
+  }
+
+             
+     
 ?>
   
 <!DOCTYPE html>
@@ -74,17 +75,18 @@
 
 <body>
   <div class="main-container">
-  <nav>
-        <h2 class="logo_name"><a href="index.php">Madhyapur Restro</a></h2>
-
+      <nav>
+        <h2 class="logo_name"><a href="customerpage.php">Madhyapur Restro</a></h2>
+            
         <div class="cart">
-         <p style="margin-right:1rem;"></a> <?php echo $_SESSION['user'];?></p>
-          <div class="cart-img"> 
-            <!-- <img src="cart.svg" alt="cart"/> -->
-           <!-- <a href="./cart/carts.php" class="cart-store"> cart (<span>0</span>)</a> -->
-          
-        <?php
-          
+                  <?php
+          if(isset($_SESSION['user'])){
+          echo "<a class='orderhistory' href='./cart/order-view.php'>order history</a>";
+      }?>
+        <p style="margin-right:1rem;">
+        <?php if(isset($_SESSION['user'])){ echo $_SESSION['user'];}?></p>
+          <div class="cart-img">
+          <?php
               if(!empty($_SESSION["shopping_cart"])) {
               $cart_count = count(array_keys($_SESSION["shopping_cart"]));
               ?>
@@ -93,10 +95,20 @@
             <?php
             }
             ?>
-         </div>
-          <a href="logout.php" class="login">logout</a>
-        </div>
+          </div>
+         <?php
+          if(isset($_SESSION['user'])){
+          echo "<a href='logout.php' class='login'>logout</a>";
+      }
+      
+         else{
+         echo "<a href='/login.php' class='login'>login</a>";
+     }
+         ?>
+                </div>
+        
       </nav>
+
 
     <div class="menu-list">
       <h2 class="title">Our Menu</h2>
