@@ -8,11 +8,13 @@
 include 'config.php';
 $sql = "SELECT o.order_number,c.customer_id,c.fullname, sum(o.total_amount) as totalsales FROM customers as c 
 inner join orders as o
-on c.customer_id=o.customer_id
+on c.customer_id=o.customer_id WHERE order_status='Delivered'
 group by c.customer_id;";
 
 
 $result = mysqli_query($con, $sql);
+// $row=mysqli_fetch_assoc($result);
+
 
 $data = [];
 if (mysqli_num_rows($result) > 0) {
@@ -51,7 +53,8 @@ if (mysqli_num_rows($result) > 0) {
             <li><a href="orders.php" >Orders</a></li>
             <li><a href="customerdetails.php" >Customer Details</a></li>
            <li><a href="salesreport.php" class="font active">Sales Report</a></li>
-            <li><a href="../login.php">logout</a></li>
+            <li><a href="payment.php" class="font ">Payments</a></li>
+            <li><a href="../adminlogout.php">logout</a></li>
           </ul>
         </nav>
       </div>
@@ -77,10 +80,10 @@ if (mysqli_num_rows($result) > 0) {
           ?> 
           <tbody>
             <tr>
-            <td><?php $i++;?></td>
-            <td><?php $d['customer_id']?></td>
-            <td><?php $d['fullname']?></td>
-            <td><?php $d['totalsales']?></td>
+            <td><?php echo $i++;?></td>
+            <td><?php echo $d['customer_id'];?></td>
+            <td><?php echo $d['fullname'];?></td>
+            <td><?php echo $d['totalsales'];?></td>
             </tr>
           </tbody>
           <?php } ?>

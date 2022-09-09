@@ -38,7 +38,8 @@
               <li><a href="orders.php">Orders</a></li>
               <li><a href="customerdetails.php">Customer Details</a></li>
               <li><a href="salesreport.php">sales report</a></li>
-              <li><a href="../logout.php">logout</a></li>
+                <li><a href="payment.php" class="font">Payments</a></li>
+              <li><a href="../adminlogout.php">logout</a></li>
             </ul>
           </nav>
         </div>

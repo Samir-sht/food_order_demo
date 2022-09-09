@@ -12,12 +12,16 @@
 		$a=uniqid().$_FILES["img"]["name"];
 		$target_file=$target_dir.$a;
 
+if(empty($foodname) || empty($foodprice) || empty($fooddesc)){
+  header("location:food.php");
+}
     //store image to the path folder
 
-    if(move_uploaded_file($_FILES["img"]["tmp_name"],$target_file)){
+     else if(move_uploaded_file($_FILES["img"]["tmp_name"],$target_file)){
         // die ('success');
     }
 
+else{
     $sql="INSERT INTO food(food_name,food_desc,food_price,image) VALUES('$foodname','$fooddesc','$foodprice','$target_file')";
     $result=mysqli_query($con,$sql);
     if($result){
@@ -30,4 +34,5 @@
         echo "data not inserted".mysqli_error($con);
     }
     }
+}
 ?>

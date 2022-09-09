@@ -1,14 +1,22 @@
 <?php
 
     include './admin/config.php';
-    $errname = $erremail = $errpwd=$errphone = ' ';
+    $errname = $erremail = $errpwd=$errphone =$status= ' ';
     if (isset($_POST['register'])) {
 
     $username=$_POST['username'];
-    $pwd=$_POST['password'];
+    $pwd=md5($_POST['password']);
     $email=$_POST['email'];
     $phone=$_POST['number'];
     $numberpattern="/^(98[0-9]{8})$/";
+
+    $res="SELECT * FROM customers WHERE fullname='$username' AND email='$email' AND phone_number='$phone'";
+    $query=mysqli_query($con,$res);
+
+    if(mysqli_num_rows($query)>=1)
+   {
+    exit("user already exists");
+   }
 
     if(empty($username)){
       // echo ("<script>
@@ -36,14 +44,14 @@
       // </script>");
       $errpwd="Please Enter Password!";
     }
-   else{
-    if((strlen($pwd)<8 || strlen($pwd)>25)){
+  
+    else if((strlen($pwd)<8)){
     //   echo ("<script>
     //   window.alert('Please Enter Password of 8 or more characters!!');
     // </script>");
-    $errpwd="Please Enter Password of 8 to 25 characters!";
+    $errpwd="Please Enter Password of 8 or more characters!";
     }
-  }
+  
 
     if(empty($phone)){
       $errphone="Please Enter Phone Number of 10 digits!";
@@ -89,6 +97,7 @@
       <div class="container__form">
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
           <h2 class="title">Create an account</h2>
+          <div class="formerror"><?php echo $status;?></div>
           <div>
           <label>FullName</label><br>
           <input type="text" name="username"  />

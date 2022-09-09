@@ -7,7 +7,7 @@ if($_SESSION['customerid']){
  include '../admin/config.php';
 
 
- $sql1 = "SELECT * FROM orders WHERE customer_id = '".$id."'" ;
+ $sql1 = "SELECT * FROM orders WHERE customer_id = '".$id."' " ;
 $res = mysqli_query($con, $sql1);
 $data = [];
 if (mysqli_num_rows($res) > 0) {
@@ -16,7 +16,7 @@ if (mysqli_num_rows($res) > 0) {
         }
     }
 ?>
-<body>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
@@ -26,6 +26,7 @@ if (mysqli_num_rows($res) > 0) {
 
 
 <link rel="stylesheet" href="../dist/css/style.min.css" />
+<body>
 <div class="main-container">
     <nav>
         <h2 class="logo_name"><a href="../customerpage.php">Madhyapur Restro</a></h2>

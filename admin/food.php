@@ -45,7 +45,8 @@ if (mysqli_num_rows($result) > 0) {
             <li><a href="orders.php">Orders</a></li>
             <li><a href="customerdetails.php">Customer Details</a></li>
              <li><a href="salesreport.php">sales report</a></li>
-            <li><a href="../login.php">logout</a></li>
+              <li><a href="payment.php" class="font">Payments</a></li>
+            <li><a href="../adminlogout.php">logout</a></li>
           </ul>
         </nav>
       </div>
@@ -106,14 +107,14 @@ if (mysqli_num_rows($result) > 0) {
               </div>
               <div class="modal-body">
                 <form enctype="multipart/form-data" method="post" action="insertfood.php">
-
+                    
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label text-capitalize">Name</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" name="foodname">
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label text-capitalize">price</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1" name="foodprice">
+                    <input type="number" class="form-control" id="number" name="foodprice">
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label text-capitalize">Description</label>
@@ -150,6 +151,20 @@ if (mysqli_num_rows($result) > 0) {
       myInput.focus()
     });
   </script>
+
+  <script>
+    // disable negative values
+var number = document.getElementById('number');
+
+// Listen for input event on numInput.
+number.onkeydown = function(e) {
+    if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8)) {
+        return false;
+    }
+}
+</script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 

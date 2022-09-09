@@ -6,6 +6,8 @@
     if(isset($_POST['customerlogin'])){
       $email=$_POST['email'];
       $pwd=$_POST['password'];
+    
+      $password = md5($pwd);
       // $Role=$_POST['role'];
 
       if(empty($email)){
@@ -42,7 +44,8 @@
       
 
       else{
-      $sql="SELECT * FROM customers WHERE email='$email' AND password='$pwd'";
+  
+      $sql="SELECT * FROM customers WHERE email='$email' AND password='$password'";
       $result=mysqli_query($con,$sql);
 
       if(mysqli_num_rows($result)>0){

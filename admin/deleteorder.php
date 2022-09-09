@@ -7,7 +7,7 @@ $sql = "DELETE FROM orders WHERE  order_number=$id";
 
 if (mysqli_query($con, $sql)) {
     echo ("<script>
-            window.alert('Order cancelled successfully');
+            window.alert('Data Deleted successfully');
             window.location.href='orders.php';
             </script>");
 } else {

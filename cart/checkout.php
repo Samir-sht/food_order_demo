@@ -9,6 +9,7 @@ if (!($_SESSION['user'])) {
     }
     
 include '../admin/config.php';
+require 'stripeconfig.php';
 
 
 $message=" ";
@@ -25,18 +26,19 @@ if(isset($_SESSION["shopping_cart"])){
         $price[]=$product["price"];
         $total_price += ($product["price"]*$product["quantity"]);   
         }
-    $allitems=implode('<br>', $items);
-    $allquantity=implode('<br>', $quantity);
-    $unitprice=implode('<br>', $price);
-     $sql="INSERT INTO orders (food_items,order_qty,food_price,total_amount,customer_id)
-    VALUES('".$allitems."','".$allquantity."','".$unitprice."','".$total_price."','".$id."')";   
-                if(mysqli_query($con,$sql)){
-                    $message= "order placed";
+    $allitems=implode(' <br>', $items);
+    $allquantity=implode('<br> ', $quantity);
+    $unitprice=implode('<br> ', $price);
+    //  $sql="INSERT INTO orders (food_items,order_qty,food_price,total_amount,customer_id)
+    // VALUES('".$allitems."','".$allquantity."','".$unitprice."','".$total_price."','".$id."')";   
+    //     mysqli_query($con,$sql);
+    //             if(mysqli_query($con,$sql)){
+    //                 $message= "order placed";
 
-                }
-                else{
-                    $message="order not placed";
-                }           
+    //             }
+    //             else{
+    //                 $message="order not placed";
+    //             }           
                
                
                 
@@ -85,16 +87,9 @@ if(isset($_SESSION["shopping_cart"])){
         
       </nav>
 
-<?php echo $message."<br>";?>
+<?php #echo $message."<br>";?>
 
-<label>Payment</label>
-<form action="" method="post">
-    <select name="payment_option">
-        <option value="cash">cash</option>
-        <option value="stripe">Stripe</option>
-    </select><br>
-    <input type="submit" name="payment" value="pay">
-</form>
+
 <?php #include 'order-view.php';?>
 <!-- <div class="container-sm">
   <h5 class="heading">Order details</h5>
@@ -122,22 +117,49 @@ if(isset($_SESSION["shopping_cart"])){
 //     }
 ?>
 
-<!-- <div class="row">
-  <table>
+<div class="container-sm">
+  <h5 class="heading">Cart Summary</h5>
+  <table class="cart-summary">
     <thead>
-    <th>sn</th>
       <th>food items</th>
       <th>quantity</th>
       <th>food price</th>
-      <th>total amount</th>
-      <th>status</th>
-      <th>action</th>
-    </thead>
-  
+</thead>
     <tbody>
-         
-
+         <td><?php echo $allitems.'<br>'; ?></td>
+         <td><?php echo $allquantity; ?></td>
+         <td><?php echo $unitprice; ?></td>
     </tbody>
+    <tr>
+    <td colspan="2"> Total Price</td>
+    <td><?php echo $total_price;?></td>
+    </tr>
+    
+</table>
+
+<form action="order-submit.php" method="post">
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+data-key="<?php echo $publishableKey?>" data-amount="<?php echo $total_price * 100;?>" data-name = "FoodPayment" data-description="Payment Gateway" data-image="" data-currency="npr"
+data-email="">
+ </script>   
+<input type="hidden" name="total" value="<?php echo $total_price;?>">
+
+</form>
 
 
-</div> -->
+
+
+<!--     <form action="https://uat.esewa.com.np/epay/main" method="POST">
+    <input value="<?#php echo $total_price;?>" name="tAmt" type="hidden">
+    <input value="<?#php echo $total_price;?>" name="amt" type="hidden">
+    <input value="0" name="txAmt" type="hidden">
+    <input value="0" name="psc" type="hidden">
+    <input value="0" name="pdc" type="hidden">
+    <input value="EPAYTEST" name="scd" type="hidden">
+    <input value="ee2c3ca1-696b-4cc5-a6be-2c40d929d453" name="pid" type="hidden">
+    <input value="http://localhost/food%20ordering/cart/esewasuccess.php" type="hidden" name="su">
+    <input value="http://localhost/food%20ordering/cart/esewa-failure.php" type="hidden" name="fu">
+    <input value="Pay with Esewa" type="submit" name="esewasuccess">
+    </form> -->
+
+</div>
