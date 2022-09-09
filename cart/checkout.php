@@ -87,39 +87,11 @@ if(isset($_SESSION["shopping_cart"])){
         
       </nav>
 
-<?php #echo $message."<br>";?>
 
-
-<?php #include 'order-view.php';?>
-<!-- <div class="container-sm">
-  <h5 class="heading">Order details</h5>
-  <div class="message_box" style="margin:10px 0px;" onclick="this.remove();">
-<?php #echo $status; ?>
-</div> -->
-
-
-    
- <?php
-// session_start();
-// if($_SESSION['customerid']){
-//     $id=$_SESSION['customerid'];
-// }
-//  include '../admin/config.php';
-
-
-//  $sql1 = "SELECT * FROM orders WHERE customer_id = '".$id."'";
-// $res = mysqli_query($con, $sql1);
-// $data = [];
-// if (mysqli_num_rows($res) > 0) {
-//     while ($row = mysqli_fetch_assoc($res)) {
-//     array_unshift($data, $row);
-//         }
-//     }
-?>
 
 <div class="container-sm">
   <h5 class="heading">Cart Summary</h5>
-  <table class="cart-summary">
+  <table class="order-history">
     <thead>
       <th>food items</th>
       <th>quantity</th>
@@ -149,6 +121,8 @@ data-email="">
 
 
 
+
+
 <!--     <form action="https://uat.esewa.com.np/epay/main" method="POST">
     <input value="<?#php echo $total_price;?>" name="tAmt" type="hidden">
     <input value="<?#php echo $total_price;?>" name="amt" type="hidden">
@@ -163,3 +137,5 @@ data-email="">
     </form> -->
 
 </div>
+</div>
+<?php include '../footer.php';?>

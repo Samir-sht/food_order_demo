@@ -102,5 +102,7 @@ if (mysqli_num_rows($res) > 0) {
         
     </table>
     </div>
+   
 </div>
+<?php include '../footer.php';?>
 </body>

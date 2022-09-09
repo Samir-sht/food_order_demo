@@ -103,7 +103,7 @@ if(isset($_SESSION["shopping_cart"])){
     $total_price = 0;
 ?>	
   <div class="row">
-  <table>
+  <table class="">
     <thead>
       <th>image</th>
       <th>name</th>
@@ -171,9 +171,9 @@ foreach ($_SESSION["shopping_cart"] as $product){
     </div>
       </div>
    
-  
-</div>
+        </div>
 
+<?php include '../footer.php';?>
 <script>
     // disable negative values
 var number = document.getElementById('number');
