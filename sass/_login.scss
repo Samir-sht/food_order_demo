@@ -8,11 +8,16 @@ header{
  
  .container{
      @include css-grid(1fr,'1fr 1fr');
-     height: 500px;
+     height: auto;
      width: 700px;
      background-color: $clr_black;
      color:$clr_white;
      font-family: $poppins;
+
+    //  .error{
+    //     background-color: $clr_red;
+    //     padding: 0 3rem;
+    //  }
  
      img{
       @include image;
@@ -22,8 +27,9 @@ header{
      &__form{
          @include css-flexbox(center,center);
          flex-direction: column;
-         padding:1.25rem 0;
+         padding:1.2rem 0;
      
+        
  
          h2{
              text-align: left;
@@ -41,7 +47,7 @@ header{
              
          }
  
-         input[type="email"], input[type="password"],input[type="text"]
+         input[type="email"], input[type="password"],input[type="text"],input[type="number"]
          {
              @include form-input-fields;
              font-family: $poppins;
@@ -61,6 +67,12 @@ header{
             span.remember{
                 font-size: 1rem;
                 margin-left: 0.5rem;
+             }
+
+             div.formerror{
+                font-size: 0.8rem;
+                font-weight: $font_normal;
+                color: $clr_red;
              }
         
          
@@ -91,7 +103,14 @@ header{
                     color:$clr_red;
                     font-weight: $font_medium;
                  }
+
+                 
+                 
              }
+         }
+
+         p.admin{
+            margin-top: 1rem;
          }
      
      }

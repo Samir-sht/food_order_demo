@@ -51,8 +51,12 @@ text-decoration: none;
 
 
 @mixin card{
-    height: 300px;
-    width: 540px;
+    // height: 450px;
+    width: 300px;
     box-shadow: 5px 6px 20px rgba(0,0,0,.5);
-    gap: 1rem;
+    
+}
+
+@mixin capitalize{
+    text-transform: capitalize;
 }
