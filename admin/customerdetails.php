@@ -45,6 +45,7 @@ if (mysqli_num_rows($result) > 0) {
             <li><a href="orders.php">Orders</a></li>
             <li><a href="customerdetails.php" class="font active">Customer Details</a></li>
            <li><a href="salesreport.php">sales report</a></li>
+           <li><a href="payment.php">payments</a></li>
             <li><a href="../adminlogout.php">logout</a></li>
           </ul>
         </nav>

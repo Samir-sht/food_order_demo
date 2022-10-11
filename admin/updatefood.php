@@ -94,7 +94,7 @@ $data = mysqli_fetch_assoc($res);
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label text-capitalize">price</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1" name="foodprice" value="<?php echo $data['food_price'];?>">
+                    <input type="number" class="form-control" id="number" name="foodprice" value="<?php echo $data['food_price'];?>">
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label text-capitalize">Description</label>
@@ -109,3 +109,19 @@ $data = mysqli_fetch_assoc($res);
 </div>
 </div>
 </div>
+
+
+
+  <script>
+    // disable negative values
+var number = document.getElementById('number');
+
+// Listen for input event on numInput.
+number.onkeydown = function(e) {
+    if(!((e.keyCode > 95 && e.keyCode < 106)
+      || (e.keyCode > 47 && e.keyCode < 58) 
+      || e.keyCode == 8)) {
+        return false;
+    }
+}
+</script>

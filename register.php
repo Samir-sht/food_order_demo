@@ -1,15 +1,15 @@
 <?php
 
     include './admin/config.php';
-    $errname = $erremail = $errpwd=$errphone =$status= ' ';
+    $errname = $erremail = $errpwd =$errphone =$status= ' ';
     if (isset($_POST['register'])) {
 
     $username=$_POST['username'];
-    $pwd=md5($_POST['password']);
+    $pwd=($_POST['password']);
     $email=$_POST['email'];
     $phone=$_POST['number'];
     $numberpattern="/^(98[0-9]{8})$/";
-
+    $hash=md5($pwd);
     $res="SELECT * FROM customers WHERE fullname='$username' AND email='$email' AND phone_number='$phone'";
     $query=mysqli_query($con,$res);
 
@@ -38,6 +38,7 @@
       // </script>");
       $erremail="Please Enter Valid Email!";
     }
+    
     if(empty($pwd)){
       // echo ("<script>
       // window.alert('Please Enter Password!!');
@@ -45,12 +46,12 @@
       $errpwd="Please Enter Password!";
     }
   
-    else if((strlen($pwd)<8)){
-    //   echo ("<script>
-    //   window.alert('Please Enter Password of 8 or more characters!!');
-    // </script>");
-    $errpwd="Please Enter Password of 8 or more characters!";
-    }
+    //  else if((strlen($pwd)<8)){
+    // //   echo ("<script>
+    // //   window.alert('Please Enter Password of 8 or more characters!!');
+    // // </script>");
+    // $errpwd="Please Enter Password of 8 or more characters!";
+    // }
   
 
     if(empty($phone)){
@@ -61,7 +62,7 @@
       $errphone="Number must start from 98";
     }
      else{   
-        $sql = "INSERT INTO customers(fullname,email,phone_number,password) values ('$username','$email','$phone','$pwd')";
+        $sql = "INSERT INTO customers(fullname,email,phone_number,password) values ('$username','$email','$phone','$hash')";
         $result = mysqli_query($con, $sql);
         if ($result) {
             echo "<script type='text/javascript'>alert('Registration Successful');</script>";
@@ -97,7 +98,7 @@
       <div class="container__form">
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
           <h2 class="title">Create an account</h2>
-          <div class="formerror"><?php echo $status;?></div>
+         
           <div>
           <label>FullName</label><br>
           <input type="text" name="username"  />

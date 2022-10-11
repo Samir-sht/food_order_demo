@@ -173,7 +173,7 @@ foreach ($_SESSION["shopping_cart"] as $product){
    
         </div>
 
-<?php include '../footer.php';?>
+<?php #include '../footer.php';?>
 <script>
     // disable negative values
 var number = document.getElementById('number');

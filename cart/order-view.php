@@ -104,5 +104,5 @@ if (mysqli_num_rows($res) > 0) {
     </div>
    
 </div>
-<?php include '../footer.php';?>
+<?php #include '../footer.php';?>
 </body>
