@@ -8,4 +8,3 @@ for backend: php
 for database:mysql
 
 
-note: this project is not completed yet..
